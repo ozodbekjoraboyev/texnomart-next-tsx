@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Location01Icon from "../../../../public/location-01-stroke-rounded (1)";
 import GlobalIcon from "../../../../public/global-stroke-rounded (1)";
-import { Button, Dropdown, MenuProps, Space } from "antd";
+import { Button, Dropdown, MenuProps, message, Space } from "antd";
 import Link from "next/link";
 import axios from "axios";
 
@@ -17,8 +17,11 @@ function NavbarTop() {
 https://gw.texnomart.uz/api/web/v1/region/regions-list`
       )
       .then((res) => {
-        console.log(res.data.data.data);
         setShahar(res.data.data.data);
+        console.log(message.success(`${tanlanganShahar} tanlandi`));
+      })
+      .catch((error) => {
+        console.error("Ma'lumot olishda xatolik:", error);
       });
   }, []);
 
@@ -44,15 +47,11 @@ https://gw.texnomart.uz/api/web/v1/region/regions-list`
   return (
     <div className="NAvbarBG text-white p-2">
       <div className="flex gap-2 container mx-auto justify-between items-center">
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2 cursor-pointer">
           <Location01Icon />
           <div>
             <div>
-              <Dropdown
-                className="  "
-                menu={{ items: shaharItems }}
-                placement="bottom"
-              >
+              <Dropdown menu={{ items: shaharItems }} placement="bottom">
                 <Space>
                   <p>{tanlanganShahar}</p>
                 </Space>
