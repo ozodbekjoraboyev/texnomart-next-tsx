@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Carusel from "../components/carusel/page";
 import Cards from "../components/card/page";
 

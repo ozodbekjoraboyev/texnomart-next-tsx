@@ -2,11 +2,18 @@
 import React, { useEffect, useState } from "react";
 import Location01Icon from "../../../../public/location-01-stroke-rounded (1)";
 import GlobalIcon from "../../../../public/global-stroke-rounded (1)";
-import { Button, Dropdown, MenuProps, message, Space } from "antd";
+import { Button, Dropdown, MenuProps,  Space } from "antd";
 import Link from "next/link";
 import axios from "axios";
 
 function NavbarTop() {
+  type shaharType = {
+    id: number;
+    name: string;
+    slug: string;
+    show_in_list: boolean;
+    near_region_id: number;
+}
   const [language, setLanguage] = useState("UZ");
   const [Shahar, setShahar] = useState<shaharType[]>();
   const [tanlanganShahar, setTanlanganShahar] = useState("Toshkent");
@@ -18,7 +25,6 @@ https://gw.texnomart.uz/api/web/v1/region/regions-list`
       )
       .then((res) => {
         setShahar(res.data.data.data);
-        console.log(message.success(`${tanlanganShahar} tanlandi`));
       })
       .catch((error) => {
         console.error("Ma'lumot olishda xatolik:", error);
@@ -38,11 +44,13 @@ https://gw.texnomart.uz/api/web/v1/region/regions-list`
     },
   ];
 
-  const shaharItems: MenuProps["items"] = Shahar?.map((item) => ({
-    key: item.id.toString(),
-    label: item.name,
-    onClick: () => setTanlanganShahar(item.name),
-  }));
+  const shaharItems: MenuProps["items"] = Shahar
+  ? Shahar.map((item) => ({
+      key: item.id.toString(),
+      label: item.name,
+      onClick: () => setTanlanganShahar(item.name),
+    }))
+  : [];
 
   return (
     <div className="NAvbarBG text-white p-2">
@@ -59,11 +67,11 @@ https://gw.texnomart.uz/api/web/v1/region/regions-list`
             </div>
           </div>
           <div className="flex pl-12 gap-10 items-center">
-            <p>Bizning do'konlarimiz</p>
+          <p>Bizning do&#39;konlarimiz</p>
             <Link href="/yuridikt">
               <Button>Yuridik shaxslar uchun</Button>
             </Link>
-            <p>To'lov usullari</p>
+            <p>To&#39;lov usullari</p>
           </div>
         </div>
         <div className="flex items-center gap-2 ">

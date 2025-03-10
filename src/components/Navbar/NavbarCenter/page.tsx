@@ -6,25 +6,13 @@ import Cancel01Icon from "../../../../public/cancel-01-stroke-rounded";
 import ShoppingCartCheckIn02Icon from "../../../../public/shopping-cart-check-in-02-stroke-rounded";
 import FavouriteIcon from "../../../../public/favourite-stroke-rounded";
 import UserIcon from "../../../../public/user-stroke-rounded";
-import { Button, Dropdown, Input, MenuProps, Modal, Space } from "antd";
-import Search from "antd/es/input/Search";
-import {
-  DownOutlined,
-  HeartOutlined,
-  SearchOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { Button, Dropdown, MenuProps, Modal, Space } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
+import Image from "next/image";
 function NAvbarCenter() {
   const [katalog, setKatalog] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleKatalog = () => {
-    setKatalog((prevState) => !prevState);
-  };
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -85,16 +73,20 @@ function NAvbarCenter() {
     <div className="container m-auto pt-5 px-3">
       <div className=" flex  items-center gap-5 justify-between">
         <Link href={"/"}>
-          {" "}
-          <img
+          <Image
             src="https://texnomart.uz/_nuxt/img/texnomart-logo.3b2791c.svg"
-            alt=""
+            alt="Texnomart logo"
+            width={200}
+            height={100}
+            priority
           />
+
+          
         </Link>
         <Button
           onClick={() => {
-            setKatalog(!katalog); // Holatni to‘g‘ri o‘zgartirish
-            setIsModalOpen(true); // Modalni ochish
+            setKatalog(!katalog); 
+            setIsModalOpen(true);
           }}
           style={{
             display: "flex",
@@ -116,15 +108,20 @@ function NAvbarCenter() {
           onOk={handleOk}
           onCancel={handleCancel}
           footer={null}
-          bodyStyle={{ padding: "20px" }}
         >
           <Dropdown menu={{ items }}>
             <a onClick={(e) => e.preventDefault()}>
               <Space>
-                <img
+                <Image
+                  width={100}
+                  height={100}
+                  src="https://mini-io-api.texnomart.uz/catalog/category/small-front-icon/19/a05699c9-17b3-41fb-b5c7-5e0b52db28cd.svg"
+                  alt="Logo"
+                />
+                {/* <img
                   src="https://mini-io-api.texnomart.uz/catalog/category/small-front-icon/19/a05699c9-17b3-41fb-b5c7-5e0b52db28cd.svg"
                   alt=""
-                />
+                /> */}
                 Smartfonlar va gajetlar
               </Space>
             </a>

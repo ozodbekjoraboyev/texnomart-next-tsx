@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import Image from "next/image";
 
 function Carusel() {
   const [imglar, setImglar] = useState<string[]>([]);
@@ -35,11 +36,15 @@ function Carusel() {
         </button>
 
         {imglar.length > 0 && (
-          <img
-            className="w-[1500px]  h-[400px] mt-5 object-cover rounded-lg shadow-lg transition-transform duration-700"
-            src={imglar[carusel]}
-            alt="Carusel rasmi"
-          />
+         <Image
+         className="mt-5 object-cover rounded-lg shadow-lg transition-transform duration-700"
+         width={1500}
+         height={400}
+         src={imglar[carusel]}
+         alt="Carusel rasmi"
+         priority // ⚡️ LCP optimizatsiya
+       />
+       
         )}
 
         <button

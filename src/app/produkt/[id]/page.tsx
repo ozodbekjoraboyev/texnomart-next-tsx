@@ -1,27 +1,30 @@
 "use client";
 import axios from "axios";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-function SeparateProductCards() {
-  const { id } = useParams();
-  const [product, setProduct] = useState<{
-    availability: string;
-    brand: string;
-    breadcrumbs: {
-      name: string;
-      slug: string;
-    };
+interface productTypes {
+  availability: string;
+  brand: string;
+  breadcrumbs: {
     name: string;
-    code: string;
-    guarantee: string;
-    id: number;
-    installment_price: number;
-    is_can_loan_order: number;
-    large_images: string;
-    loan_price: number;
-    main_characters: {};
-  }>();
+    slug: string;
+  };
+  name: string;
+  code: string;
+  guarantee: string;
+  id: number;
+  installment_price: number;
+  is_can_loan_order: number;
+  large_images: string[];
+  loan_price: number;
+  main_characters: { name: string, value: string};
+}
+
+function SeparateProductCards() {
+  const id = Number(useParams().id);
+  const [product, setProduct] = useState<productTypes>();
 
   useEffect(() => {
     axios
@@ -35,11 +38,13 @@ https://gw.texnomart.uz/api/web/v1/product/detail?id=${id}`
       })
       .catch((error) => console.error("Xatolik:", error));
   }, [id]);
-
+  if (!product) {
+    return <>loading...</>;
+  }
   return (
     <div className="container m-auto">
-      <img className="h-[300px]" src={product?.large_images[0]} alt="" />
-      <p>{product?.name}</p>
+      <Image width={100} height={100} src={`${product.large_images[0]}`} alt="sss" priority/>
+      <p>{product.name}</p>
     </div>
   );
 }

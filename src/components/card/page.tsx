@@ -1,8 +1,5 @@
 "use client";
-import { message } from "antd";
-import axios from "axios";
-import { it } from "node:test";
-import React, { useEffect, useState } from "react";
+
 import BushCard from "../BushCard/page";
 
 function Cards() {
