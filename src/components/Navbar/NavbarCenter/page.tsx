@@ -80,12 +80,10 @@ function NAvbarCenter() {
             height={100}
             priority
           />
-
-          
         </Link>
         <Button
           onClick={() => {
-            setKatalog(!katalog); 
+            setKatalog(!katalog);
             setIsModalOpen(true);
           }}
           style={{
@@ -118,10 +116,7 @@ function NAvbarCenter() {
                   src="https://mini-io-api.texnomart.uz/catalog/category/small-front-icon/19/a05699c9-17b3-41fb-b5c7-5e0b52db28cd.svg"
                   alt="Logo"
                 />
-                {/* <img
-                  src="https://mini-io-api.texnomart.uz/catalog/category/small-front-icon/19/a05699c9-17b3-41fb-b5c7-5e0b52db28cd.svg"
-                  alt=""
-                /> */}
+            
                 Smartfonlar va gajetlar
               </Space>
             </a>

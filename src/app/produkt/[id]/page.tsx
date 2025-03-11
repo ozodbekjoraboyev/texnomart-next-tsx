@@ -19,7 +19,7 @@ interface productTypes {
   is_can_loan_order: number;
   large_images: string[];
   loan_price: number;
-  main_characters: { name: string, value: string};
+  main_characters: { name: string, value: string}[]
 }
 
 function SeparateProductCards() {

@@ -26,10 +26,11 @@ function Yuridikt() {
   }, []);
 
   return (
-      <div>
-        {yuridikt.map((item) => (
-          <div key={item.id} className="flex">
-            <div>
+    <div>
+      {yuridikt.map((item) => (
+        <>
+          <div key={item.id} className="flex w-full justify-between">
+            <div className=" flex gap-5  bg-blue-200  mb-4 rounded-md p-3 ">
               <Image
                 width={30}
                 height={30}
@@ -38,11 +39,14 @@ function Yuridikt() {
                 className="rounded-lg"
               />
               <p className="mt-2 font-semibold">{item.slug}</p>
-              {item.title && <p className="text-gray-600">{item.title}</p>}
+              {/* <p className="text-gray-600">{item.title}</p> */}
+              <p className=" bg-amber-600x">{item.info}</p>
             </div>
+            salpm
           </div>
-        ))}
-      </div>
+        </>
+      ))}
+    </div>
   );
 }
 
