@@ -17,3 +17,10 @@ export type CardsType = {
 export type BashCardType = {
   item: CardsType;
 };
+
+export type product = CardsType[];
+
+export type CurrentType = {
+  total: number;
+  products: product;
+};

@@ -22,9 +22,10 @@ function BushCard({ item }: BashCardType) {
             <Image
               width={200}
               height={200}
+              
               src={item.image}
               alt={item.name}
-              className="object-contain rounded-md"
+              className="object-contai rounded-md"
               priority
             />
           </Link>
