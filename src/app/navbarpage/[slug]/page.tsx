@@ -26,10 +26,12 @@ function NavbarPage() {
         return (
           <div key={item.id}>
             <BushCard item={item} />
+            
           </div>
         );
       })}
       <div>
+        
         <Pagination
           pageSize={20}
           defaultCurrent={currentPage}

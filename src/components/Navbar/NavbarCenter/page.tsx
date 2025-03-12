@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Menu01Icon from "../../../../public/menu-01-stroke-rounded";
 import Cancel01Icon from "../../../../public/cancel-01-stroke-rounded";
 import ShoppingCartCheckIn02Icon from "../../../../public/shopping-cart-check-in-02-stroke-rounded";
@@ -10,6 +10,9 @@ import { Button, Dropdown, MenuProps, Modal, Space } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import Image from "next/image";
+import axios from "axios";
+import SearchInput from "./input/page";
+
 function NAvbarCenter() {
   const [katalog, setKatalog] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,6 +72,8 @@ function NAvbarCenter() {
     },
   ];
 
+
+
   return (
     <div className="container m-auto pt-5 px-3">
       <div className=" flex  items-center gap-5 justify-between">
@@ -116,23 +121,13 @@ function NAvbarCenter() {
                   src="https://mini-io-api.texnomart.uz/catalog/category/small-front-icon/19/a05699c9-17b3-41fb-b5c7-5e0b52db28cd.svg"
                   alt="Logo"
                 />
-            
                 Smartfonlar va gajetlar
               </Space>
             </a>
           </Dropdown>
         </Modal>
 
-        <div className=" flex justify-between  max-w-[600px]  w-full  border-2 border-amber-500  rounded-lg  focus:ring-2 focus:ring-yellow-500 text-lg">
-          <input
-            className="focus:outline-none w-full pl-2"
-            type="text"
-            placeholder="Qidirish..."
-          />
-          <div className=" bg-amber-500 p-2 px-3 ">
-            <SearchOutlined />
-          </div>
-        </div>
+        <SearchInput />
         <div className=" flex gap-5">
           <div className=" flex flex-col items-center pl-5 cursor-pointer">
             <UserIcon />
